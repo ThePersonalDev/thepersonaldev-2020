@@ -1,0 +1,7 @@
+# Generated files
+.cache
+dist/main.js
+dist/main.js.map
+
+# Dependencies
+node_modules
