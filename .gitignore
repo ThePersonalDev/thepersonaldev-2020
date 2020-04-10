@@ -1,7 +1,6 @@
 # Generated files
 .cache
-dist/main.js
-dist/main.js.map
+dist
 
 # Dependencies
 node_modules
