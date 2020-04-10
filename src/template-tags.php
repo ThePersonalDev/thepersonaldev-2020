@@ -2,7 +2,7 @@
 /**
  * Outputs either a linked site title or logo
  */
-function the_title_or_logo() {
+function the_title_or_logo () {
   $theme_logo = get_theme_mod( 'custom_logo' );
 
   ?>
