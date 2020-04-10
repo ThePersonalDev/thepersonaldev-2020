@@ -8,11 +8,10 @@ function the_title_or_logo () {
   ?>
     <a href="<?= get_home_url() ?>" class="color-1">
       <?php if ($theme_logo): ?>
-        <img src="<?= $theme_logo ?>">
+        <img class="site-title-image" src="<?= wp_get_attachment_image_src($theme_logo, 'full')[0] ?>">
       <?php else: ?>
         <?php bloginfo('name') ?>
       <?php endif ?>
     </a>
   <?php
-
 }
