@@ -9,16 +9,14 @@
 <body <?php body_class() ?>>
   <?php wp_body_open() ?>
 
-  <header class="container row">
-    <div class="col-xs site-title">
+  <header class="container flex">
+    <div class="site-title">
       <?php tcp_the_title_or_logo() ?>
     </div>
-    <div class="col-xs">
-      <div class="row">
-        <div class="menu-main">
-          Menu Block
-        </div>
-        <?php tcp_the_navbar_callout() ?>
+    <div class="flex">
+      <div class="menu-main">
+        Menu Block
       </div>
+      <?php tcp_the_navbar_callout() ?>
     </div>
   </header>
