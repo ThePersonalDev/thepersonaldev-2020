@@ -14,7 +14,20 @@
       <?php tcp_the_title_or_logo() ?>
     </div>
     <div class="flex text-uppercase">
-      <?php if (has_nav_menu('main')) wp_nav_menu(['theme_location' => 'main']) ?>
+      <?php if (has_nav_menu('main')): ?>
+        <div class="desktop-main-menu-wrap">
+          <?php wp_nav_menu(['theme_location' => 'main']) ?>
+        </div>
+      <?php endif ?>
+      
       <?php tcp_the_navbar_callout() ?>
+
+      <?php if (has_nav_menu('main')): ?>
+        <a class="mobile-main-menu-hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </a>
+      <?php endif ?>
     </div>
   </header>
