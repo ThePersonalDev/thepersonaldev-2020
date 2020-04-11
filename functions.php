@@ -13,3 +13,12 @@ add_action('wp_enqueue_scripts', function () {
 
   wp_enqueue_script( 'main', get_stylesheet_directory_uri() . '/assets/js/theme-customizer.js', ['jquery', 'customize-preview'], $theme_version, true );
 });
+
+/**
+ * Menus
+ */
+add_action('init', function () {
+  register_nav_menus([
+    'main' => 'Main Menu'
+  ]);
+});

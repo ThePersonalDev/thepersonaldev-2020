@@ -10,10 +10,6 @@ header {
   height: 40px;
 }
 
-.menu-main {
-  vertical-align: middle;
-}
-
 .navbar-callout {
   padding: 15px 30px;
   vertical-align: middle;
@@ -25,5 +21,24 @@ header {
   &:hover {
     background: $link-1;
     color: $color-2;
+  }
+}
+
+#menu-main {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+
+  li {
+    a {
+      color: $color-1;
+      padding: 15px 15px;
+      font-size: 0.85rem;
+    }
+
+    &.current-menu-item a {
+      border-bottom: 2px solid $link-1;
+    }
   }
 }
