@@ -12,6 +12,7 @@ import 'superfish'
   // Submenu expand
   $('.mobile-main-menu-wrap .menu-item-has-children > a').click(function () {
     $(this).parent().toggleClass('sub-menu-visible')
+    $(this).parent().find('.menu-item-has-children').removeClass('sub-menu-visible')
     return false
   })
 })(window.jQuery, window.wp)
