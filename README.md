@@ -14,9 +14,9 @@
 ### Commands
 
 ```bash
-# SASS file watcher
+# SASS and front/backend JavaScript file watcher
 npm run dev
 
-# Create final build file
+# Create final build files into /dist
 npm run build
 ```

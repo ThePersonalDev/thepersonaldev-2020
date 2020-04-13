@@ -63,10 +63,6 @@
       font-size: 0.85rem;
       display: inline-block;
     }
-
-    &.current-menu-item > a, &.current-menu-ancestor > a, &:hover > a {
-      border-bottom: 2px solid $link-1;
-    }
   }
 
   .sub-menu {
@@ -82,13 +78,20 @@
     z-index: 10;
 
     a {
-      width: 100%;
+      white-space: nowrap;
+      display: inline-block;
+    }
+
+    
+    .current-menu-item > a, .current-menu-ancestor > a,
+    .current-menu-item:hover > a, .current-menu-ancestor:hover > a {
+      color: $link-1 !important;
     }
 
     .sub-menu {
       left: -100%;
       top: -22px;
-      margin-left: -62px;
+      margin-left: -46px;
     }
   }
 }

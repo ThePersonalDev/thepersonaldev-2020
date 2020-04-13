@@ -7,6 +7,7 @@ import 'superfish'
   // Hamburger
   $('.mobile-main-menu-hamburger').click(function () {
     $('body').toggleClass('mobile-main-menu-is-open')
+    $('.mobile-main-menu-wrap .menu-item-has-children').removeClass('sub-menu-visible')
   })
 
   // Submenu expand
