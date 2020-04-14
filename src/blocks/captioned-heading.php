@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Adds a subtitle above a heading
+ */
 add_action('init', function () {
   $assets = include(get_template_directory() . '/dist/js/blocks/captioned-heading.asset.php');
 
