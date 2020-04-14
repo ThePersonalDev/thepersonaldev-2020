@@ -8,38 +8,75 @@ const icon = createElement('svg', {viewBox: '0 0 512 512'},
 
 registerBlockType('tpd/captioned-heading', {
   title: 'Captioned Heading',
-  icon,
   category: 'theme_blocks',
+  icon,
+
   attributes: {
-    title: {
+    subtitle: {
       type: 'array',
       source: 'children',
-      selector: 'h2'
+      selector: 'p.tpd-captioned-heading-subtitle'
+    },
+    heading: {
+      type: 'array',
+      source: 'children',
+      selector: 'h2.tpd-captioned-heading'
+    },
+    content: {
+      type: 'array',
+      source: 'children',
+      selector: 'div.tpd-captioned-heading-content'
     }
   },
+  
   example: {
-    heading: 'Heading'
+    subtitle: 'subtile',
+    heading: 'Heading',
+    content: 'lorem ipsum...'
   },
  
   edit: props => {
     const {
       className,
-      attributes: {heading},
+      attributes: {subtitle, heading, content},
       setAttributes
     } = props
     
-    const onChangeHeading = newHeading => {
-      setAttributes({heading: newHeading})
+    const onChangeHeading = val => {
+      setAttributes({heading: val})
+    }
+    const onChangeSubtitle = val => {
+      setAttributes({subtitle: val})
+    }
+    const onChangeContent = val => {
+      setAttributes({content: val})
     }
     
     return (
       <div className={className}>
         <RichText
+          tagName="p"
+          className="tpd-captioned-heading-subtitle"
+          placeholder="Subtitle text"
+          label='Subtitle'
+          onChange={onChangeSubtitle}
+          value={subtitle}
+        />
+        <RichText
           tagName="h2"
+          className="tpd-captioned-heading"
           placeholder="Heading text"
           label='Heading'
           onChange={onChangeHeading}
           value={heading}
+        />
+        <RichText
+          tagName="div"
+          className="tpd-captioned-heading-content"
+          placeholder="Heading content"
+          label='Heading'
+          onChange={onChangeContent}
+          value={content}
         />
       </div>
     )
@@ -48,12 +85,14 @@ registerBlockType('tpd/captioned-heading', {
   save: props => {
     const {
       className,
-      attributes: {heading}
+      attributes: {subtitle, heading, content}
     } = props
     
     return (
       <div className={className}>
+        <RichText.Content tagName='p' value={subtitle} />
         <RichText.Content tagName='h2' value={heading} />
+        <RichText.Content tagName='div' value={content} />
       </div>
     )
   }
