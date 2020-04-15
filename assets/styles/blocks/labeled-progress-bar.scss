@@ -1,0 +1,43 @@
+.wp-block-tpd-labeled-progress-bar {
+  margin-bottom: 40px;
+  font-size: 0.8rem;
+  
+  .tpd-labeled-progress-bar {
+    width: 100%;
+    background: $bg-1;
+    border-radius: 5px;
+
+    span {
+      display: block;
+      height: 6px;
+      border-radius: 6px;
+      background: $link-1;
+
+      transition: width 0.35s ease;
+    }
+  }
+  
+  .tpd-labeled-progress-bar-label {
+    font-weight: 100;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1.5rem;
+    flex: 1;
+    align-self: flex-end;
+    margin-bottom: 10px;
+  }
+
+  .tpd-labeled-progress-bar-percent {
+    flex: 0 0 80px;
+    text-align: right;
+    color: $link-1;
+
+    &:after {
+      content: '%';
+    }
+  }
+}
+
+.edit-post-visual-editor {
+  .tpd-labeled-progress-bar-percent:after {display: none;}
+}

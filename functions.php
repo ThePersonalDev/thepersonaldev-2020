@@ -11,8 +11,8 @@ require get_template_directory() . '/src/blocks/labeled-progress-bar.php';
 add_action('wp_enqueue_scripts', function () {
   $theme_version = wp_get_theme()->get( 'Version' );
 
-  wp_enqueue_style( 'ad-hoc', get_stylesheet_uri(), [], $theme_version);
   wp_enqueue_style( 'main', get_stylesheet_directory_uri() . '/dist/styles/main.css', [], $theme_version);
+  wp_enqueue_style( 'adhoc', get_stylesheet_uri(), [], $theme_version);
 
   wp_enqueue_script( 'tpd-main', get_stylesheet_directory_uri() . '/dist/js/main.js', ['jquery',], $theme_version, true );
   wp_enqueue_script( 'tpd-customizer', get_stylesheet_directory_uri() . '/assets/js/theme-customizer.js', ['jquery', 'customize-preview'], $theme_version, true );
@@ -24,7 +24,8 @@ add_action('wp_enqueue_scripts', function () {
 add_action('admin_enqueue_scripts', function () {
   $theme_version = wp_get_theme()->get( 'Version' );
 
-  wp_enqueue_style('tpd-editor', get_stylesheet_directory_uri() . '/dist/styles/blocks.css');
+  wp_enqueue_style('tpd-editor', get_stylesheet_directory_uri() . '/dist/styles/editor.css');
+  wp_enqueue_style('tpd-editor-adhoc', get_stylesheet_directory_uri() . '/editor.css');
 });
 
 /**

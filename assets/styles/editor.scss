@@ -1,0 +1,41 @@
+@import 'variables.scss';
+@import 'blocks/blocks.scss';
+
+$color-editor-main: #555d66;
+$color-editor-main-hover: #191e23;
+
+.edit-post-visual-editor {
+  background: $bg-1;
+
+  .editor-post-title__input, * {
+    color: $color-1;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .wp-block {
+    max-width: $width;
+  }
+
+  button {
+    * {color: $color-editor-main;}
+    &:hover {
+      * {color: $color-editor-main-hover;}
+    }
+  }
+
+  .block-editor-inserter__toggle {
+    svg {fill: $color-editor-main-hover}
+
+    &:hover svg {fill: $color-editor-main-hover}
+  }
+  .block-editor-block-list__empty-block-inserter .block-editor-inserter__toggle:not(:hover), .block-editor-default-block-appender .block-editor-inserter .block-editor-inserter__toggle:not(:hover) {
+    svg {fill: $color-1;}
+  }
+
+  .block-editor-block-list__layout .block-editor-block-list__block.is-selected::before {
+    box-shadow: -3px 0 0 0 darken($color-1, 10%);
+  }
+  .block-editor-block-list__layout .block-editor-block-list__block.is-selected::before {
+    border-color: darken($color-1, 10%);
+  }
+}

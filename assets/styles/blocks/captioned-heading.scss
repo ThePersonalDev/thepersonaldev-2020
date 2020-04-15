@@ -17,8 +17,10 @@
   }
 }
 
-body.home {
-  main > div:first-child {
+body.home,
+.edit-post-visual-editor {
+  main > div:first-child,
+  div:not(.block-editor-inner-blocks) > .block-editor-block-list__layout > .wp-block:first-child {
     .wp-block-tpd-captioned-heading {
       margin-bottom: 60px;
     }
