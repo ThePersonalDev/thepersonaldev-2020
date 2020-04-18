@@ -1,4 +1,19 @@
 .footer-main {
-  padding: 20px;
-  padding-bottom: 100px;
+  padding: 60px 20px;
+  position: relative;
+  z-index: 1;
+
+  &:before {
+    content: '';
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    z-index: -1;
+    background: $bg-2;
+  }
 }
