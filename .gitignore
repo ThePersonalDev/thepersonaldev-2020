@@ -1,6 +1,5 @@
 # Generated files
 .cache
-dist
 
 # Dependencies
 node_modules
