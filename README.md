@@ -1,5 +1,22 @@
 # The Personal Dev 2020 WordPress Theme
 
+## Screenshots
+
+### Page edit screen with custom styles
+![](https://i.imgur.com/1OmUxtW.png)
+
+### First block on home page
+![](https://i.imgur.com/geFJD0o.png)
+
+### Custom progress bar blocks
+![](https://i.imgur.com/ym6T1fG.png)
+
+### Custom Projects Post Type project grid
+![](https://i.imgur.com/A8LDa4a.png)
+
+### Custom icon callout block
+![](https://i.imgur.com/GSSaE7n.png)
+
 ## Local Development
 
 ### 🚨 Important Notes
