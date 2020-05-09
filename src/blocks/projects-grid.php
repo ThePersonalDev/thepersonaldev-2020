@@ -12,7 +12,14 @@ add_action('init', function () {
 
   register_block_type('tpd/projects-grid', [
     'editor_script' => 'tpd-blocks-projects-grid',
-    'render_callback' => 'tpd_blocks_projects_grid_render'
+    'render_callback' => 'tpd_blocks_projects_grid_render',
+    'attributes' => [
+      'excludeTags' => [
+        'type' => 'array',
+        'default' => [],
+        'items' => ['type' => 'number']
+      ]
+    ]
   ]);
 });
 
