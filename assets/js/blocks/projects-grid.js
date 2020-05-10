@@ -1,5 +1,6 @@
 import {registerBlockType} from '@wordpress/blocks'
 import {createElement} from '@wordpress/element'
+import {withSelect} from '@wordpress/data'
 import ServerSideRender from '@wordpress/server-side-render'
 import ProjectTagSelector from './components/ProjectTagSelector'
 
@@ -20,16 +21,27 @@ registerBlockType('tpd/projects-grid', {
     }
   },
   
-  edit: ({attributes, setAttributes}) => {
+  edit: withSelect(select => {
+    return {tags: select('core').getEntityRecords('taxonomy', 'project_tag')}
+  })(({tags, attributes, setAttributes}) => {
     const onExcludedTagsChange = tags => {
       setAttributes({excludedTags: tags})
     }
-    
+
+    // Genereate tag options for select
+    let tagOpts = []
+    if (tags) {
+      tagOpts = tags.map(tag => ({
+        label: tag.name,
+        value: tag.id
+      }))
+    }
+
     return (
       <>
-        <ProjectTagSelector attributes={attributes} onChange={onExcludedTagsChange} />
+        <ProjectTagSelector attributes={attributes} tags={tagOpts} onChange={onExcludedTagsChange} />
         <ServerSideRender block='tpd/projects-grid' attributes={attributes} />
       </>
     )
-  }
+  })
 })
