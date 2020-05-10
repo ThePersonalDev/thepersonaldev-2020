@@ -1,5 +1,8 @@
 import {registerBlockType} from '@wordpress/blocks'
 import {createElement} from '@wordpress/element'
+import {withSelect} from '@wordpress/data'
+import {PanelBody} from '@wordpress/components'
+import {InspectorControls} from '@wordpress/editor'
 import ServerSideRender from '@wordpress/server-side-render'
 import ProjectTagSelector from './components/ProjectTagSelector'
 
@@ -17,19 +20,46 @@ registerBlockType('tpd/projects-grid', {
       type: 'array',
       items: 'number',
       default: []
+    },
+    mustIncludeTags: {
+      type: 'array',
+      items: 'number',
+      default: []
     }
   },
   
-  edit: ({attributes, setAttributes}) => {
+  /**
+   * - Fetch list of tags
+   */
+  edit: withSelect(select => {
+    return {tags: select('core').getEntityRecords('taxonomy', 'project_tag')}
+  })(({tags, attributes, setAttributes}) => {
+    // Genereate tag options for select
+    let tagOpts = []
+    if (tags) {
+      tagOpts = tags.map(tag => ({
+        label: tag.name,
+        value: tag.id
+      }))
+    }
+
     const onExcludedTagsChange = tags => {
       setAttributes({excludedTags: tags})
     }
-    
+    const onMustIncludeTagsChange = tags => {
+      setAttributes({mustIncludeTags: tags})
+    }
+
     return (
       <>
-        <ProjectTagSelector attributes={attributes} onChange={onExcludedTagsChange} />
+        <InspectorControls>
+          <PanelBody title="Tag Manager">
+            <ProjectTagSelector attributes={attributes} tags={tagOpts} selectedTags={attributes.excludedTags} label="Exclude these tags:" onChange={onExcludedTagsChange} />
+            <ProjectTagSelector attributes={attributes} tags={tagOpts} selectedTags={attributes.mustIncludeTags} label="Must include these tags:" onChange={onMustIncludeTagsChange} />
+          </PanelBody>
+        </InspectorControls>
         <ServerSideRender block='tpd/projects-grid' attributes={attributes} />
       </>
     )
-  }
+  })
 })
