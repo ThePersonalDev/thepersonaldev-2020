@@ -54,8 +54,8 @@ registerBlockType('tpd/projects-grid', {
       <>
         <InspectorControls>
           <PanelBody title="Tag Manager">
-            <ProjectTagSelector attributes={attributes} tags={tagOpts} label="Exclude these tags:" onChange={onExcludedTagsChange} />
-            <ProjectTagSelector attributes={attributes} tags={tagOpts} label="Must include these tags:" onChange={onMustIncludeTagsChange} />
+            <ProjectTagSelector attributes={attributes} tags={tagOpts} selectedTags={attributes.excludedTags} label="Exclude these tags:" onChange={onExcludedTagsChange} />
+            <ProjectTagSelector attributes={attributes} tags={tagOpts} selectedTags={attributes.mustIncludeTags} label="Must include these tags:" onChange={onMustIncludeTagsChange} />
           </PanelBody>
         </InspectorControls>
         <ServerSideRender block='tpd/projects-grid' attributes={attributes} />

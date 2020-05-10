@@ -163,11 +163,10 @@ var ProjectGridTagSelector = /*#__PURE__*/function (_Component) {
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(ProjectGridTagSelector, [{
     key: "render",
     value: function render() {
-      var excludedTags = this.props.attributes.excludedTags.excludedTags;
       return this.props.tags ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__["SelectControl"], {
         multiple: true,
         label: this.props.label,
-        value: excludedTags,
+        value: this.props.selectedTags,
         options: this.props.tags,
         onChange: this.props.onChange
       })) : Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__["Spinner"], null);
@@ -273,11 +272,13 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('tpd
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_components_ProjectTagSelector__WEBPACK_IMPORTED_MODULE_6__["default"], {
       attributes: attributes,
       tags: tagOpts,
+      selectedTags: attributes.excludedTags,
       label: "Exclude these tags:",
       onChange: onExcludedTagsChange
     }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_components_ProjectTagSelector__WEBPACK_IMPORTED_MODULE_6__["default"], {
       attributes: attributes,
       tags: tagOpts,
+      selectedTags: attributes.mustIncludeTags,
       label: "Must include these tags:",
       onChange: onMustIncludeTagsChange
     }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_5___default.a, {

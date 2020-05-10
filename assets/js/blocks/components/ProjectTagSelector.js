@@ -24,11 +24,9 @@ export default class ProjectGridTagSelector extends Component {
    * Render the multiselect field
    */
   render () {
-    let {excludedTags} = this.props.attributes.excludedTags
-
     return (this.props.tags
       ? <PanelRow>
-          <SelectControl multiple label={this.props.label} value={excludedTags} options={this.props.tags} onChange={this.props.onChange} />
+          <SelectControl multiple label={this.props.label} value={this.props.selectedTags} options={this.props.tags} onChange={this.props.onChange} />
         </PanelRow>
 
       : <Spinner />
