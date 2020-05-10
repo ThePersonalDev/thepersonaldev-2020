@@ -166,7 +166,7 @@ var ProjectGridTagSelector = /*#__PURE__*/function (_Component) {
       var excludedTags = this.props.attributes.excludedTags.excludedTags;
       return this.props.tags ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__["SelectControl"], {
         multiple: true,
-        label: "Excluded tags",
+        label: this.props.label,
         value: excludedTags,
         options: this.props.tags,
         onChange: this.props.onChange
@@ -225,6 +225,11 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('tpd
       type: 'array',
       items: 'number',
       default: []
+    },
+    mustIncludeTags: {
+      type: 'array',
+      items: 'number',
+      default: []
     }
   },
 
@@ -257,12 +262,24 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('tpd
       });
     };
 
+    var onMustIncludeTagsChange = function onMustIncludeTagsChange(tags) {
+      setAttributes({
+        mustIncludeTags: tags
+      });
+    };
+
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_editor__WEBPACK_IMPORTED_MODULE_4__["InspectorControls"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["PanelBody"], {
       title: "Tag Manager"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_components_ProjectTagSelector__WEBPACK_IMPORTED_MODULE_6__["default"], {
       attributes: attributes,
       tags: tagOpts,
+      label: "Exclude these tags:",
       onChange: onExcludedTagsChange
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_components_ProjectTagSelector__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      attributes: attributes,
+      tags: tagOpts,
+      label: "Must include these tags:",
+      onChange: onMustIncludeTagsChange
     }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_5___default.a, {
       block: "tpd/projects-grid",
       attributes: attributes

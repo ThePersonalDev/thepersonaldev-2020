@@ -18,20 +18,37 @@ add_action('init', function () {
         'type' => 'array',
         'default' => [],
         'items' => ['type' => 'number']
+      ],
+      'mustIncludeTags' => [
+        'type' => 'array',
+        'default' => [],
+        'items' => ['type' => 'number']
       ]
     ]
   ]);
 });
 
 function tpd_blocks_projects_grid_render ($attributes, $content) {
-  $tax_query = null;
+  $tax_query = [];
+
+  // Exclude tags
   if ($tags = $attributes['excludedTags']) {
-    $tax_query = [[
+    array_push($tax_query, [
       'taxonomy' => 'project_tag',
       'field' => 'id',
       'operator' => 'NOT IN',
       'terms' => $tags
-    ]];
+    ]);
+  }
+
+  // Must include tags
+  if ($tags = $attributes['mustIncludeTags']) {
+    array_push($tax_query, [
+      'taxonomy' => 'project_tag',
+      'field' => 'id',
+      'operator' => 'IN',
+      'terms' => $tags
+    ]);
   }
   
   $posts = get_posts([
@@ -43,7 +60,7 @@ function tpd_blocks_projects_grid_render ($attributes, $content) {
   ]);
 
   if (!count($posts)) {
-    return 'No Posts';
+    return 'No projects exist with the selected criteria';
   }
   
   global $post;

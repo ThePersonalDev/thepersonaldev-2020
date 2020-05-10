@@ -20,6 +20,11 @@ registerBlockType('tpd/projects-grid', {
       type: 'array',
       items: 'number',
       default: []
+    },
+    mustIncludeTags: {
+      type: 'array',
+      items: 'number',
+      default: []
     }
   },
   
@@ -41,12 +46,16 @@ registerBlockType('tpd/projects-grid', {
     const onExcludedTagsChange = tags => {
       setAttributes({excludedTags: tags})
     }
+    const onMustIncludeTagsChange = tags => {
+      setAttributes({mustIncludeTags: tags})
+    }
 
     return (
       <>
         <InspectorControls>
           <PanelBody title="Tag Manager">
-            <ProjectTagSelector attributes={attributes} tags={tagOpts} onChange={onExcludedTagsChange} />
+            <ProjectTagSelector attributes={attributes} tags={tagOpts} label="Exclude these tags:" onChange={onExcludedTagsChange} />
+            <ProjectTagSelector attributes={attributes} tags={tagOpts} label="Must include these tags:" onChange={onMustIncludeTagsChange} />
           </PanelBody>
         </InspectorControls>
         <ServerSideRender block='tpd/projects-grid' attributes={attributes} />
